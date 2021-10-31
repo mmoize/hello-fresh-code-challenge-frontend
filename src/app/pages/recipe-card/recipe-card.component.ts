@@ -9,10 +9,12 @@ export class RecipeCardComponent implements OnInit {
 
   @Input() weeklyMenu:any;
 
+  @Input() recipe:any;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log('consl', this.weeklyMenu)
+    console.log('consl', this.recipe)
   }
 
 }

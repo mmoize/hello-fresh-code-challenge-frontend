@@ -1,1 +1,42 @@
-<p>recipes works!</p>
+<body>
+  <div *ngIf="!recipeDetail">
+    <div>
+        <h1 class="recipes-title">Unique Cuisines Of Hello Fresh </h1>
+    </div>
+  <div class="card text-center m-3">
+    <div class="card-body">
+      <div
+        style="margin-left: 2.5%"
+        fxLayout="row wrap"
+        fxLayout.lt-sm="column"
+        fxLayoutGap="32px"
+        fxLayoutAlign="flex-start"
+      >
+        <ng-container
+          *ngFor="
+            let recipe of Recipes
+              | paginate: { itemsPerPage: 6, currentPage: p }
+          "
+        >
+          <app-recipe-card (click)="openRecipeDetail(recipe)"
+            fxFlex="0 1 calc(33.3% - 32px)"
+            fxFlex.lt-md="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="100%"
+            [recipe]="recipe"
+          ></app-recipe-card>
+        </ng-container>
+      </div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="float-center"
+      ></pagination-controls>
+    </div>
+  </div>
+  </div>
+
+
+  <app-recipe-detail (ReturnToRecipes)="closeRecipeDetail($event)" [recipeDetail]="toRecipeDetail" *ngIf="recipeDetail"></app-recipe-detail>
+
+</body>

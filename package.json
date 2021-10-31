@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "angularx-social-login": "^4.0.1",
+    "jw-angular-pagination": "^1.2.0",
+    "ngx-pagination": "^5.1.1",
     "ngx-tiny-slider": "^1.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

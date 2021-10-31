@@ -10,7 +10,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,7 +31,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     AuthenticationComponent,
-    PagesComponent
+    PagesComponent,
     
   ],
   imports: [
@@ -44,7 +44,9 @@ import { SharedModule } from './shared/shared.module';
     ReactiveFormsModule,
     SocialLoginModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule
+
 
   ],
   bootstrap: [AppComponent],

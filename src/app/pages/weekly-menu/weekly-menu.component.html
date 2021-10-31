@@ -1,20 +1,37 @@
 <body>
-
-
+    
+    <div *ngIf="!openRecipeDetail">
         <div *ngIf="currentlyDisplayedMenu" style="margin: 20px; padding-bottom:20px">
             <button (click)="onClickDisplayPreviousMenu()" *ngIf="currentlyDisplayedMenu.week_number != 1" class="previous-week "> last week</button>
             <button (click)="onClickDisplayNextMenu()" class="next-week"> Next week</button>
             
         </div>    
         <div class="container">
-            <div id="countdown">
-                <ul>
-                    <li><span id="days"></span>days</li>
-                    <li><span id="hours"></span>Hours</li>
-                    <li><span id="minutes"></span>Minutes</li>
-                    <li><span id="seconds"></span>Seconds</li>
+            <div id="date-blokc">
+                <ul style="font-weight: bolder;">
+                    <li><span id="days"></span>{{dateDisplayDays}}</li>
+                    <li><span id="month"></span>{{dateDisplayMonth}}</li>
+                    <li><span id="year"></span>{{dateDisplayYear}}</li>
                 </ul>
             </div>
+            <div class="number-of-meals">
+                <ul>
+                    <li id="no-of-meals-title">Number of Meals</li>
+                    <li>
+                        <span id="days"></span>
+                        <button (click)="onChangeNoofMeals($event, 3)" class="num-meals-btn" id="btn3"> 3 </button>
+                    </li>
+                    <li>
+                        <span id="days"></span>
+                        <button (click)="onChangeNoofMeals($event, 4)" class="num-meals-btn" id="btn4"> 4 </button>
+                    </li>
+                    <li>
+                        <span id="days"></span>
+                        <button (click)="onChangeNoofMeals($event, 5)" class="num-meals-btn" id="btn5"> 5 </button>
+                    </li>
+                </ul>
+            </div>
+
         </div>
 
         <div 
@@ -28,6 +45,7 @@
             <ng-container *ngFor="let week_menu of currentlyDisplayedMenu.recipes">
 
             <app-recipe-card 
+            (click)=" openRecipeDetails(week_menu)"
             fxFlex="0 1 calc(33.3% - 32px)"
             fxFlex.lt-md="0 1 calc(50% - 32px)"
             fxFlex.lt-sm="100%"
@@ -36,4 +54,9 @@
 
             </ng-container>
         </div>
+    </div>
+
+    <app-recipe-detail (ReturnToMenu)="closeRecipeDetail($event)" [recipeDetailFromMenu]="recipeDetailData"  *ngIf="openRecipeDetail"></app-recipe-detail>
+
+
 </body>

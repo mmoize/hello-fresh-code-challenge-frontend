@@ -7,11 +7,11 @@ import { Pagesroutes } from './pages.routing';
 import { RouterModule } from '@angular/router';
 import { AngularMaterialModule } from '../angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserModule } from '@angular/platform-browser';
-import { SharedComponent } from '../shared/shared.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 
 
@@ -23,7 +23,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     WeeklyMenuComponent,
     BoardComponent,
     RecipesComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipeDetailComponent,
 
   ],
   imports: [
@@ -32,7 +33,9 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     AngularMaterialModule,
     FlexLayoutModule,
     SharedModule,
-    MatGridListModule
+    MatGridListModule,
+    NgxPaginationModule
+   
 
 
 

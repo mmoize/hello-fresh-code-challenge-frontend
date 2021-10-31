@@ -18,7 +18,7 @@ export class AppComponent {
     
   ngOnInit(): void {
       this.dataService.loadWeeklyMenu()
-      this.dataService.getRecipes()
+      this.dataService.loadAllRecipes()
    }
 
 
