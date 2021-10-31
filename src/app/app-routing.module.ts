@@ -4,7 +4,7 @@ import { AuthGuard } from './authentication/auth.guard';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { PagesComponent } from './pages/pages.component';
 
-// canActivate: [AuthGuard]
+
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        loadChildren: () => import ("./pages/pages.module").then(m => m.PagesModule)
+        loadChildren: () => import ("./pages/pages.module").then(m => m.PagesModule), canActivate: [AuthGuard]
       },
     ]
   },

@@ -14,7 +14,7 @@
                     <li><span id="year"></span>{{dateDisplayYear}}</li>
                 </ul>
             </div>
-            <div class="number-of-meals">
+            <div *ngIf="currentlyDisplayedMenu" class="number-of-meals">
                 <ul>
                     <li id="no-of-meals-title">Number of Meals</li>
                     <li>

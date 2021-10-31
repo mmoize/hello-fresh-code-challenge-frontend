@@ -62,7 +62,6 @@ export class WeeklyMenuComponent implements OnInit {
 
   ngAfterContentInit() {
     this.observableMedia.asObservable().subscribe((change:MediaChange[]) => {
-      console.log('its media change', change)
       this.grid.cols = this.gridByBreakpoint[change[change.length-1].mqAlias];
     });
   }

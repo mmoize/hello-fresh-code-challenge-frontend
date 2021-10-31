@@ -14,44 +14,27 @@ export class AuthGuard implements CanActivate  {
   constructor( private router: Router, private socialAuthService: SocialAuthService) {
   }
 
-
-
-  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-  //   return this.socialAuthService.authState.pipe(
-  //     map((socialUser: SocialUser) => !!socialUser),
-  //     tap((isLoggedIn: boolean) => {
-  //       if (!isLoggedIn) {
-  //         this.router.navigate(['login']);
-  //       }
-  //     })
-  //   );
-  // }
-  
-
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Promise<boolean>  {
 
-    let url: string = state.url;
     const result = this.returnUserDetails();
-
     if (!result) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/auth']);
     }
 
     return result;
 
-    }
+  }
 
-    
-
-    async returnUserDetails() {
-     const value = await localStorage.getItem('user') ;
-      if (value === null) {
-        this.router.navigate(['/login']);
-        return false;
-      } else {
-        return true;
-      }
+  
+  async returnUserDetails() {
+    const value = await localStorage.getItem('user') ;
+    if (value === null) {
+      this.router.navigate(['/auth']);
+      return false;
+    } else {
+      return true;
     }
+  }
 
 }
 

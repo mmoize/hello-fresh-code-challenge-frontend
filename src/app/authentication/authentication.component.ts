@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {GoogleLoginProvider,SocialUser, SocialAuthService} from 'angularx-social-login';
 
@@ -11,8 +11,10 @@ import {GoogleLoginProvider,SocialUser, SocialAuthService} from 'angularx-social
 export class AuthenticationComponent implements OnInit {
 
   isLoggedin!: boolean;
-  loginForm!: FormGroup;
+  form!: FormGroup;
   socialUser!: SocialUser;
+
+  signup = false;
   
 
   constructor(
@@ -23,26 +25,89 @@ export class AuthenticationComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });    
+    this.form = new FormGroup({
+      email: new FormControl(null, {
+        updateOn: 'change',
+        validators: [Validators.required]
+      }),
+      firstName: new FormControl(null, {
+        updateOn: 'change',
+        validators: [Validators.required]
+      }),
+      password: new FormControl(null, {
+        updateOn: 'change',
+        validators: []
+      }),
+    });   
     
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = (user != null);
+      localStorage.setItem('user', JSON.stringify(this.socialUser));
       console.log(this.socialUser);
     });
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
-       this.router.navigate(['/'])
+       this.router.navigate(['/board'])
     });
   }
 
   logOut(): void {
     this.socialAuthService.signOut();
+    this.router.navigate(['/auth'])
+    localStorage.removeItem('user');
+  }
+
+  onSignUP() {
+    this.signup = true;
+  }
+
+  onLogin() {
+    this.signup =false;
+  }
+
+  onSubmit() {
+
+
+
+    if (!this.form.value.password) {
+      return;
+    } else {
+      const email =  this.form.value.email;
+      const password =  this.form.value.password;
+      
+      const user = {
+        firstName:email,
+      }
+  
+      localStorage.setItem('user', JSON.stringify(user));
+      this.router.navigate(['/board'])
+    }
+
+  }
+
+
+  onSubmitSignup() {
+
+
+    if (!this.form.value.password) {
+      return;
+    }
+    const name =  this.form.value.firstName;
+    const email =  this.form.value.email;
+    const password =  this.form.value.password;
+
+    
+    const user = {
+      firtsName:name,
+      email:email
+    }
+
+    localStorage.setItem('user', JSON.stringify(user));
+    this.router.navigate(['/board'])
+
   }
 
 

@@ -20,5 +20,9 @@ export class PagesComponent implements OnInit {
     this.sidenav.close();
   }
 
+  logout() {
+    localStorage.removeItem('user');
+  }
+
 
 }

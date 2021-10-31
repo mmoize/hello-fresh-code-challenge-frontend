@@ -22,14 +22,12 @@ export class DataserviceService {
     return this.http.get("assets/weeklymenu-data.json").subscribe((resdata:any) => {
       this.weeklyMenuData = resdata
       this.weeklyMenuData$.next(this.weeklyMenuData)
-      console.log("loaded", resdata)
     })
   }
 
   loadAllRecipes(){
     return this.http.get("assets/recipe-list-data.json").subscribe((resdata:any) => {
       this.Recipes = resdata
-      console.log("all", this.Recipes)
     })
   }
 
@@ -47,7 +45,6 @@ export class DataserviceService {
     for (let week in this.weeklyMenuData) {
       
       if (week == data) {
-        console.log('weeks found', week)
       }
 
     }

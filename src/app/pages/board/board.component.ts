@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
+  user:any;
+
   constructor() { }
 
   ngOnInit(): void {
+
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   

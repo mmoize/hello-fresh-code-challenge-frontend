@@ -12,7 +12,7 @@
           <a routerLink="recipes" (click)="closeNav()" routerLinkActive="active"
             >Explore Recipes</a
           >
-          <a routerLink="sign-up" (click)="closeNav()" routerLinkActive="active"
+          <a routerLink="auth" (click)="closeNav()" (click)="logout()" routerLinkActive="active"
             >Sign out</a
           >
         </nav>
@@ -27,7 +27,7 @@
           <a routerLink="board" routerLinkActive="active">Home</a>
           <a routerLink="weekly-menu" routerLinkActive="active">Menu</a>
           <a routerLink="recipes" routerLinkActive="active">Explore Recipes</a>
-          <a routerLink="sign-up" routerLinkActive="active">Sign out</a>
+          <a routerLink="auth" (click)="logout()" routerLinkActive="active">Sign out</a>
         </nav>
       </header>
     </mat-toolbar>
