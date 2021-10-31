@@ -1,0 +1,39 @@
+<body>
+
+
+        <div *ngIf="currentlyDisplayedMenu" style="margin: 20px; padding-bottom:20px">
+            <button (click)="onClickDisplayPreviousMenu()" *ngIf="currentlyDisplayedMenu.week_number != 1" class="previous-week "> last week</button>
+            <button (click)="onClickDisplayNextMenu()" class="next-week"> Next week</button>
+            
+        </div>    
+        <div class="container">
+            <div id="countdown">
+                <ul>
+                    <li><span id="days"></span>days</li>
+                    <li><span id="hours"></span>Hours</li>
+                    <li><span id="minutes"></span>Minutes</li>
+                    <li><span id="seconds"></span>Seconds</li>
+                </ul>
+            </div>
+        </div>
+
+        <div 
+        *ngIf="currentlyDisplayedMenu"
+        style="margin-left: 2.5%;"
+        fxLayout="row wrap" 
+        fxLayout.lt-sm="column" 
+        fxLayoutGap="32px" 
+        fxLayoutAlign="flex-start">
+
+            <ng-container *ngFor="let week_menu of currentlyDisplayedMenu.recipes">
+
+            <app-recipe-card 
+            fxFlex="0 1 calc(33.3% - 32px)"
+            fxFlex.lt-md="0 1 calc(50% - 32px)"
+            fxFlex.lt-sm="100%"
+            [weeklyMenu]="week_menu"
+            ></app-recipe-card>
+
+            </ng-container>
+        </div>
+</body>

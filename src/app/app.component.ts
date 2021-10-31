@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataserviceService } from './core/dataservice.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hello-fresh-challenge-frontend';
+
+
+  constructor(
+    private dataService:DataserviceService, ) { 
+
+    }
+
+    
+  ngOnInit(): void {
+      this.dataService.loadWeeklyMenu()
+      this.dataService.getRecipes()
+   }
+
+
 }

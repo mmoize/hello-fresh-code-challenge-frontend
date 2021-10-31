@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over">
+        <label>Hello Fresh</label>
+        <hr />
+        <nav>
+          <a routerLink="board" (click)="closeNav()" routerLinkActive="active"
+            >Home</a
+          >
+          <a routerLink="weekly-menu" (click)="closeNav()" routerLinkActive="active"
+            >Menu</a
+          >
+          <a routerLink="recipes" (click)="closeNav()" routerLinkActive="active"
+            >Explore Recipes</a
+          >
+          <a routerLink="sign-up" (click)="closeNav()" routerLinkActive="active"
+            >Sign out</a
+          >
+        </nav>
+      </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="nav-mat-toolbar" >
+      <header>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        <label>Hello Fresh</label>
+        <nav>
+          <a routerLink="board" routerLinkActive="active">Home</a>
+          <a routerLink="weekly-menu" routerLinkActive="active">Menu</a>
+          <a routerLink="recipes" routerLinkActive="active">Explore Recipes</a>
+          <a routerLink="sign-up" routerLinkActive="active">Sign out</a>
+        </nav>
+      </header>
+    </mat-toolbar>
+    <!-- <section>
+        
+    </section> -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

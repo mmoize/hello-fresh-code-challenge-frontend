@@ -1,0 +1,67 @@
+body {
+  background-color: rgb(209, 243, 243);
+  height: 100vh;
+  padding-top: 5%;
+}
+
+.container {
+  color: #333;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.next-week {
+  float: right;
+  font-weight: bold;
+  margin-bottom: 45px;
+  border: 2px coral;
+  font-size: 17px;
+  background-color: #3be73b77;
+  padding: 10px;
+  border-radius: 10px;
+  
+}
+.previous-week {
+  float: left;
+  font-weight: bold;
+  border: 2px coral;
+  font-size: 17px;
+  font-size: 17px;
+  background-color: #3be73b77;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+  
+  li {
+    font-size: calc(1.125rem * var(--smaller));
+  }
+  
+  li span {
+    font-size: calc(3.375rem * var(--smaller));
+  }
+}

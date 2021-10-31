@@ -1,28 +1,72 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { SharedComponent } from './shared/shared.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { BoardComponent } from './board/board.component';
-import { WeeklyMenuComponent } from './weekly-menu/weekly-menu.component';
-import { RecipesComponent } from './recipes/recipes.component';
+
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagesComponent } from './pages/pages.component';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SharedComponent,
     AuthenticationComponent,
-    BoardComponent,
-    WeeklyMenuComponent,
-    RecipesComponent
+    PagesComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    SocialLoginModule,
+    HttpClientModule,
+    SharedModule
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  exports: [],
+
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              environment.oath_client_id
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    } 
+  ]
+
 })
 export class AppModule { }

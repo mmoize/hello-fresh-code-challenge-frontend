@@ -1,0 +1,18 @@
+import { Component,Input, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-recipe-card',
+  templateUrl: './recipe-card.component.html',
+  styleUrls: ['./recipe-card.component.scss']
+})
+export class RecipeCardComponent implements OnInit {
+
+  @Input() weeklyMenu:any;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    console.log('consl', this.weeklyMenu)
+  }
+
+}
