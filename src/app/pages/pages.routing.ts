@@ -10,7 +10,7 @@ import { PagesComponent } from './pages.component';
 
 
 export const Pagesroutes: Routes = [
-    
+  { path: '', redirectTo: 'board', pathMatch: 'full' },
   {  path: "board", component: BoardComponent },
   { path: "weekly-menu", component: WeeklyMenuComponent },
   { path: "recipes", component: RecipesComponent },
