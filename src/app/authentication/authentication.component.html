@@ -16,10 +16,10 @@
 
     <div *ngIf="signup" class="login-page">
       <div class="form">
-        <form class="register-form">
-          <input type="text" placeholder="name"/>
-          <input type="password" placeholder="password"/>
-          <input type="text" placeholder="email address"/>
+        <form [formGroup]="form"  class="register-form">
+          <input type="text"formControlName="firstName" placeholder="name"/>
+          <input type="text" formControlName="email"  placeholder="email address"/>
+          <input type="password" formControlName="password"  placeholder="password"/>
           <button (click)="onSubmitSignup()">create</button>
           <p class="message" (click)="onLogin()">Already registered? <a >Sign In</a></p>
         </form>
