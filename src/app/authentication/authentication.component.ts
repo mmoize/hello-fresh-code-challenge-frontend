@@ -43,14 +43,20 @@ export class AuthenticationComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isLoggedin = (user != null);
+      if (this.isLoggedin) {
+        this.router.navigate(['/board'])
+      }
+     
       localStorage.setItem('user', JSON.stringify(this.socialUser));
-      console.log(this.socialUser);
     });
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(res => {
-       this.router.navigate(['/board'])
+      this.router.navigate(['/board'])
+      if (this.isLoggedin) {
+        this.router.navigate(['/board'])
+      }
     });
   }
 
